@@ -226,10 +226,12 @@ def setScrapeParameters(file_path, global_file_path):
 
 
 async def scrapePage(page, base_url, params):
+    print("Starting scraping process...")
     listings_data = []
     page_number = 1  # Start with the first page
 
     while True:
+        print(f"Processing page {page_number}...")
         params['page'] = str(page_number)
         await page.goto(f"{base_url}?{urlencode(params)}")
         print(f"Loading page {page_number}")
@@ -299,6 +301,8 @@ async def scrapePage(page, base_url, params):
             listings_data.append({'date_time_posted':date_time_posted, 'date_time_mesured_removed':None, 'up_time_hours':None, 'time_to_scrape_minutes':time_to_scrape_minutes, 'listing_is_up': True, 'name': name, 'price': price, 'price_string': price_string, 'adress':address, 'link': link, 'listing_hash_id': listing_hash_id})
 
         page_number += 1
+        print(f"Page {page_number} processed. Moving to the next page...")
+    print("Scraping process completed.")
     return listings_data
 
 async def run(json_parameters_file_path, json_global_parameters_path,  save_to_mongo = True, save_to_csv = False, check_create_db=True, ignore_white_space_for_validity=False):
@@ -555,6 +559,7 @@ def add_new_listings_to_current(db, listings_to_be_added):
         current_collection.insert_many(listings_to_be_added)
 
 def syncDatabaseWithCurrentListings(valid_listings, invalid_listings):
+    print("Starting database synchronization...")
     db_prefix = scrape_parameters["mongo_data_base_name_prefix"]
     uri = "mongodb+srv://banana111x:abalbaba@cluster0.ereatrt.mongodb.net/?retryWrites=true&w=majority"
     
@@ -577,6 +582,7 @@ def syncDatabaseWithCurrentListings(valid_listings, invalid_listings):
     update_todays_performance(db, listings_to_be_added)
     
     #add_invalid_listings_to_mongodb(db, invalid_listings)
+    print("Database synchronization completed.")
     client.close()
 
 def calculate_quantiles(prices):
@@ -608,6 +614,7 @@ def getPricesArray(todays_listings):
 
 
 def update_todays_performance(db, listings_to_be_added):
+    print("Updating today's performance data...")
     coll_prefix = scrape_parameters["mongo_collection_name_prefix"]
     # Get today's date
     today = datetime.now().date()
@@ -679,7 +686,6 @@ def update_todays_performance(db, listings_to_be_added):
 
         # Insert today's listings into the performance collection
         #performance_collection.insert_many(todays_listings)
-
         print("Today's performance data updated.")
     else:
         print("No update required for today's performance data.")
