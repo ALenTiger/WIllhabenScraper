@@ -1,0 +1,4 @@
+{
+    "invalid_product_words": ["Bitspower", "DDR4", "DDR3", "Nitro", "Vector", "EK-Quantum", "G713RW", "15p", "15", "Neo", "1440p", "Katana", "Gaminglaptop", "Backplate", "F15 ", "R7", "NVME", "SSDs", "Apex", "Monitor", "CPU", "SSD", "Box", "MacBook", "Mining Rig", "Alienware", "DELL", "Aegis", "GF65", "Legion", "Lenovo", "ROG", "Razer", "Book", "Surface", "Microsoft", "pc", "laptop", "notebook", "ultrabook", "computer", "amd", "radeon", "ryzen", "intel", "i7", "i5", "i9", "HP", "Xeon", "Komplettrechner", "Water Blocks", "WaterBlocks"],
+    "invalid_general_terms": ["Bracket", "Alphacool", "Cooler", "GPU-Kühlgehäuse", "Kühlgehäuse", "Kühlblock", "Luftkühler", "Kabelverlängerung", "Alphacool-Eisblock", "Eisblock", "Setup", "Riser", "Kabel", "Watercooling", "(Wasserkühlung)", "Defekte", "water", "waterblock", "Wasser","Wasserkühler", "Wasserblock", "Wasserkühlkörper", "Wasserkühlung ", "Lüfter ", "Getriebe ", "Kühler", "DEFEKT", "Water Blocks", "WaterBlocks"]
+}

@@ -1,0 +1,11 @@
+{
+    "invalid_product_words": ["DELL ", "Aegis", "GF65", "Legion", "Lenovo", "ROG", "Razer", "Book", "Surface", "Microsoft", "pc", "laptop", "notebook", "ultrabook", "computer", "amd", "radeon", "ryzen", "intel", "i7", "i5", "i9", "HP", "Xeon", "Water Blocks", "WaterBlocks"],
+    "invalid_other_listing_words": ["2080ti","rtx2080ti","ti", "12GB", "12G", "12 GB", "12 G","10GB", "10G", "10 GB", "10 G", "6GB", "6G", "6 GB", "6 G", "3G", "3gb", "3 gb"],
+    "invalid_general_terms": ["Lüfter ", "Getriebe ", "Kühler", "DEFEKT", "Water Blocks", "WaterBlocks"],
+    "valid_words": [],
+    "must_have_combo_words":["2080", "SUPER"],
+    "possibly_valid_words": ["rtx", "4gb", "grafikkarte", "gpu"],
+    "URL_keyword": "rtx 2080 SUPER",
+    "mongo_data_base_name_prefix": "RTX_2080_SUPER",
+    "mongo_collection_name_prefix": "RTX_2080_SUPER"
+}

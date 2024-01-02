@@ -1,0 +1,11 @@
+{
+    "invalid_product_words": ["Aegis", "GF65", "Legion", "Lenovo", "ROG", "Razer", "Book", "Surface", "Microsoft", "pc", "laptop", "notebook", "ultrabook", "computer", "amd", "radeon", "ryzen", "intel", "i7", "i5", "i9", "HP", "Xeon", "Water Blocks", "WaterBlocks"],
+    "invalid_other_listing_words": ["2060SUPER","rtx2060SUPER","SUPER","2060ti","rtx2060ti","ti", "12GB", "8GB", "8G", "3G", "3gb", "3 gb"],
+    "invalid_general_terms": ["Lüfter ", "Getriebe ", "Kühler", "DEFEKT", "Water Blocks", "WaterBlocks"],
+    "valid_words": ["2060", "RTX2060"],
+    "must_have_combo_words":[],
+    "possibly_valid_words": ["rtx", "6gb", "grafikkarte", "gpu"],
+    "URL_keyword": "rtx 2060",
+    "mongo_data_base_name_prefix": "RTX_2060",
+    "mongo_collection_name_prefix": "RTX_2060"
+}

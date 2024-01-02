@@ -1,0 +1,11 @@
+{
+    "invalid_product_words": ["DELL ", "Aegis", "GF65", "Legion", "Lenovo", "ROG", "Razer", "Book", "Surface", "Microsoft", "pc", "laptop", "notebook", "ultrabook", "computer", "amd", "radeon", "ryzen", "intel", "i7", "i5", "i9", "HP", "Xeon", "Water Blocks", "WaterBlocks"],
+    "invalid_other_listing_words": ["ti", "12GB", "8GB", "8G","6G", "6gb", "6 gb", "6G", "3G", "3gb", "3 gb", "2G", "2gb", "2 gb"],
+    "invalid_general_terms": ["Lüfter ", "Getriebe ", "Kühler", "DEFEKT", "Water Blocks", "WaterBlocks"],
+    "valid_words": ["1650SUPER", "1650 SUPER", "GTX1650 SUPER", "GTX1650SUPER ", "1650 SUPER", "GTX 1650 SUPER", "GTX 1650SUPER"],
+    "must_have_combo_words":["1650", "SUPER"],
+    "possibly_valid_words": ["gtx", "4gb", "grafikkarte", "gpu"],
+    "URL_keyword": "gtx 1650 SUPER",
+    "mongo_data_base_name_prefix": "GTX_1650_SUPER",
+    "mongo_collection_name_prefix": "GTX_1650_SUPER"
+}

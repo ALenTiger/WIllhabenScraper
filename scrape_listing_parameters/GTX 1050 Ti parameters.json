@@ -1,0 +1,11 @@
+{
+    "invalid_product_words": ["DELL ", "Aegis", "GF65", "Legion", "Lenovo", "ROG", "Razer", "Book", "Surface", "Microsoft", "pc", "laptop", "notebook", "ultrabook", "computer", "amd", "radeon", "ryzen", "intel", "i7", "i5", "i9", "HP", "Xeon", "Water Blocks", "WaterBlocks"],
+    "invalid_other_listing_words": ["SUPER", "12GB", "8GB", "8G", "3G", "3gb", "3 gb", "2G", "2gb", "2 gb"],
+    "invalid_general_terms": ["Lüfter ", "Getriebe ", "Kühler", "DEFEKT", "Water Blocks", "WaterBlocks"],
+    "valid_words": ["1050ti", "1050 ti", "GTX1050 ti", "GTX1050ti ", "1050 ti", "GTX 1050 ti", "GTX 1050ti"],
+    "must_have_combo_words":["1050", "ti"],
+    "possibly_valid_words": ["gtx", "4gb", "grafikkarte", "gpu"],
+    "URL_keyword": "gtx 1050 ti",
+    "mongo_data_base_name_prefix": "GTX_1050_ti",
+    "mongo_collection_name_prefix": "GTX_1050_ti"
+}

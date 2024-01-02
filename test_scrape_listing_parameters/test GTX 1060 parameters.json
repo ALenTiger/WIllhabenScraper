@@ -1,0 +1,8 @@
+{
+    "invalid_words": ["Kühler", "3G", "DEFEKT", "Book", "Surface", "Microsoft", "pc", "laptop", "notebook", "ultrabook", "computer", "3gb", "3 gb", "amd", "radeon", "ryzen", "intel", "i7", "i5", "i9", "HP", "Xeon", "Water Blocks", "WaterBlocks"],
+    "valid_words": ["1060", "1060OC", "GTX1060"],
+    "possibly_valid_words": ["gtx", "6gb", "grafikkarte", "gpu"],
+    "URL_keyword": "gtx 1060",
+    "mongo_data_base_name_prefix": "dev_testing",
+    "mongo_collection_name_prefix": "GTX_1060_6GB"
+}
