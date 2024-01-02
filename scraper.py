@@ -576,7 +576,7 @@ def syncDatabaseWithCurrentListings(valid_listings, invalid_listings):
 
     update_todays_performance(db, listings_to_be_added)
     
-    add_invalid_listings_to_mongodb(db, invalid_listings)
+    #add_invalid_listings_to_mongodb(db, invalid_listings)
     client.close()
 
 def calculate_quantiles(prices):
