@@ -236,8 +236,10 @@ async def scrapePage(page, base_url, params, max_retries=3, timeout=30000):
         params['page'] = str(page_number)
         params['page'] = str(page_number)
 
+        full_url = f"{base_url}?{urlencode(params)}"
+
         try:
-            await page.goto(f"{base_url}?{urlencode(params)}", timeout=timeout)
+            await page.goto(full_url, timeout=timeout)
             # Reset retries on successful navigation
             retries = 0
         except TimeoutError:

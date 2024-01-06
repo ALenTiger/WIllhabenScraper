@@ -20,10 +20,27 @@ async def check_for_stop_command():
             break
         await asyncio.sleep(1)  # Prevents this coroutine from hogging the event loop
 
+async def attempt_runs(json_parameters_path, json_parameters_global_path, max_retries, retry_delay):
+    for attempt in range(1, max_retries + 1):
+        try:
+            await run(json_parameters_path, json_parameters_global_path, True, ignore_white_space_for_validity=False)
+            break  # If run is successful, break out of retry loop
+        except Exception as e:
+            print(f"Error on attempt {attempt} for {json_parameters_path}: {e}")
+            if attempt < max_retries:
+                print(f"Retrying in {retry_delay} seconds...")
+                await asyncio.sleep(retry_delay)
+            else:
+                print("Maximum retries reached. Moving to next listing.")
+
+
 async def main():
     # Start the command checking in parallel
     asyncio.create_task(check_for_stop_command())
     n=0
+    max_retries = 3
+    retry_delay = 5  # seconds
+
     while do_scrape:
         print("Starting new scrape cycle.")
         all_files = os.listdir(sub_path)
@@ -31,8 +48,10 @@ async def main():
         for json_file in json_files:
             json_parameters_path = os.path.join(sub_path, json_file)
             n+=1
+            
             print(f"Starting scrape {n} for {json_file}...")
-            await run(json_parameters_path, json_parameters_global_path, True, ignore_white_space_for_validity=False)
+            await attempt_runs(json_parameters_path, json_parameters_global_path, max_retries, retry_delay)
+            
             if not do_scrape:
                 print("Scrape stopped by user command.")
                 return
