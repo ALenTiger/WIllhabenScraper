@@ -273,7 +273,7 @@ async def scrapePage(page, base_url, params, max_retries=3, timeout=30000):
         main_div = soup.find('div', {'id': 'skip-to-resultlist'})
 
         # Step 2: Find all the listing divs within the main div
-        listing_top_parents = main_div.find_all('div', {'class': 'Box-sc-wfmb7k-0 fEgjWL'})
+        listing_top_parents = main_div.find_all('div', {'class': 'Box-sc-wfmb7k-0 hzLKyY'})
         #listing_top_parents = main_div.find_all('div', {'class': 'Box-sc-wfmb7k-0 fEgjWL'})
 
 
@@ -287,27 +287,28 @@ async def scrapePage(page, base_url, params, max_retries=3, timeout=30000):
         for listing_div in listing_top_parents:
             # 3.1: Find the h3 tag and extract the name
 
-            name_tag = listing_div.find('h3', {'class': 'Text-sc-10o2fdq-0 eDxJxB'})
+            name_tag = listing_div.find('h3', {'class': 'Text-sc-10o2fdq-0 jAfyki'})
             name = name_tag.text
 
-            link_tag = listing_div.find('a', {'class': 'sc-ca51e2d8-0 bQrbGX sc-deecb898-1 bhBHuF'})
+            link_tag = listing_div.find('a', {'class': 'sc-ca51e2d8-0 lkgIJQ sc-deecb898-1 imWndm'})
             link = "https://www.willhaben.at/" + link_tag.get('href')
 
             # 3.2: Find the span tag and extract the price
-            price_tag = listing_div.find('span', {'class': 'Text-sc-10o2fdq-0 gKjlGm'})
+            price_tag = listing_div.find('span', {'class': 'Text-sc-10o2fdq-0 lfDSaB'})
             price_string = price_tag.text
             price = parse_price(price_string)
 
-            date_time_tag = listing_div.find('p', {'class': 'Text-sc-10o2fdq-0 esACfE'})
+            date_time_tag = listing_div.find('p', {'class': 'Text-sc-10o2fdq-0 dvUlKL'})
             if date_time_tag is not None:
                 date_time_str = date_time_tag.text
                 date_time_posted = parse_willhaben_date(date_time_str)
             else:
-                date_time_tag = listing_div.find('p', {'class': 'Text-sc-10o2fdq-0 ilFFJT'})
+                date_time_tag = listing_div.find('p', {'class': 'Text-sc-10o2fdq-0 eSEYfA'})
                 date_time_str = date_time_tag.text
                 date_time_posted = parse_willhaben_date(date_time_str)
+                
 
-            address_tag = listing_div.find('span', {'class': 'Text-sc-10o2fdq-0 kmXElp'})
+            address_tag = listing_div.find('span', {'class': 'Text-sc-10o2fdq-0 bFMMYK'})
             address = address_tag.text
 
             listing_hash_id = generate_sha_hash(name, price, date_time_posted, address)
