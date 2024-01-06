@@ -225,16 +225,33 @@ def setScrapeParameters(file_path, global_file_path):
                 scrape_global_parameters[key] = lowercase_list(value)
 
 
-async def scrapePage(page, base_url, params):
+async def scrapePage(page, base_url, params, max_retries=3, timeout=30000):
     print("Starting scraping process...")
     listings_data = []
     page_number = 1  # Start with the first page
+    retries = 0
 
     while True:
         print(f"Processing page {page_number}...")
         params['page'] = str(page_number)
-        await page.goto(f"{base_url}?{urlencode(params)}")
-        print(f"Loading page {page_number}")
+        params['page'] = str(page_number)
+
+        try:
+            await page.goto(f"{base_url}?{urlencode(params)}", timeout=timeout)
+            # Reset retries on successful navigation
+            retries = 0
+        except TimeoutError:
+            retries += 1
+            print(f"Timeout error encountered. Retry attempt {retries} for page {page_number}.")
+            await asyncio.sleep(5)  # Wait for 5 seconds before retrying
+            # if retries >= max_retries:
+            #     print(f"Maximum retries reached for page {page_number}. Moving to next page.")
+            #     page_number += 1
+            #     retries = 0
+            #     continue
+            # else:
+            #     await asyncio.sleep(5)  # Wait for 5 seconds before retrying
+            #     continue
 
         # Scroll to the bottom of the page
         last_position = 0
