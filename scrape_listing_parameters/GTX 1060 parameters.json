@@ -1,6 +1,6 @@
 {
     "invalid_product_words": ["Aegis", "GF65", "Legion", "Lenovo", "ROG", "Razer", "Book", "Surface", "Microsoft", "pc", "laptop", "notebook", "ultrabook", "computer", "amd", "radeon", "ryzen", "intel", "i7", "i5", "i9", "HP", "Xeon", "Water Blocks", "WaterBlocks"],
-    "invalid_other_listing_words": ["SUPER", "12GB", "8GB", "8G", "3G", "3gb", "3 gb"],
+    "invalid_other_listing_words": ["03G", "O3G", "SUPER", "12GB", "8GB", "8G", "3G", "3gb", "3 gb"],
     "invalid_general_terms": ["Lüfter ", "Kühler", "DEFEKT", "Water Blocks", "WaterBlocks"],
     "valid_words": ["1060", "1060OC", "GTX1060"],
     "must_have_combo_words":[],
