@@ -461,35 +461,35 @@ async def run(json_parameters_file_path, json_global_parameters_path,  save_to_m
             # If none of the above conditions are met, add to remaining_listings
             remaining_listings.append(listing)
 
+    if False:
+        # Print the categorized listings to verify
+        print(f"Valid listings: {len(valid_listings)}")
+        print(f"Invalid listings: {len(invalid_listings)}")
+        print(f"Possibly valid listings: {len(possibly_valid_listings)}")
+        print(f"Remaining listings: {len(remaining_listings)}")
 
-    # Print the categorized listings to verify
-    print(f"Valid listings: {len(valid_listings)}")
-    print(f"Invalid listings: {len(invalid_listings)}")
-    print(f"Possibly valid listings: {len(possibly_valid_listings)}")
-    print(f"Remaining listings: {len(remaining_listings)}")
 
+        print("\nVALID LISTINGS\n")
+        print(f"Valid listings: {len(valid_listings)}")
+        printListings(valid_listings)
 
-    print("\nVALID LISTINGS\n")
-    print(f"Valid listings: {len(valid_listings)}")
-    printListings(valid_listings)
+        print("\nINVALID LISTINGS\n")
+        print(f"Invalid listings: {len(invalid_listings)}")
+        printListings(invalid_listings)
+        
+        print("\nPOSSIBLE LISTINGS\n")
+        print(f"Possibly valid listings: {len(possibly_valid_listings)}")
+        printListings(possibly_valid_listings)
+        
+        print("\nREMAINING\n") 
+        print(f"Remaining listings: {len(remaining_listings)}")
+        printListings(remaining_listings)
+        print("\n\n")
 
-    print("\nINVALID LISTINGS\n")
-    print(f"Invalid listings: {len(invalid_listings)}")
-    printListings(invalid_listings)
-    
-    print("\nPOSSIBLE LISTINGS\n")
-    print(f"Possibly valid listings: {len(possibly_valid_listings)}")
-    printListings(possibly_valid_listings)
-    
-    print("\nREMAINING\n") 
-    print(f"Remaining listings: {len(remaining_listings)}")
-    printListings(remaining_listings)
-    print("\n\n")
-
-    print(f"Valid listings: {len(valid_listings)}")
-    print(f"Invalid listings: {len(invalid_listings)}")
-    print(f"Possibly valid listings: {len(possibly_valid_listings)}")
-    print(f"Remaining listings: {len(remaining_listings)}")
+        print(f"Valid listings: {len(valid_listings)}")
+        print(f"Invalid listings: {len(invalid_listings)}")
+        print(f"Possibly valid listings: {len(possibly_valid_listings)}")
+        print(f"Remaining listings: {len(remaining_listings)}")
 
     # After the valid_listings array is populated, write it to a CSV file
     if(check_create_db): createMongoDBAndCollections()

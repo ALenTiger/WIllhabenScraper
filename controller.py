@@ -6,9 +6,54 @@ async def main():
 
 sub_path = 'scrape_listing_parameters'
 testing_sub_path = 'test_scrape_listing_parameters'
-json_parameters_global_path = os.path.join("scrape_global_parameters", "global parameters.json")
+json_parameters_global_path = os.path.join("scrape_global_parameters", "global pavrameters.json")
 delay_between_scrapes = 20  # Delay in seconds
 do_scrape = True
+
+def SynchronizeScrapeProducts(json_files):
+    uri = "mongodb+srv://banana111x:abalbaba@cluster0.ereatrt.mongodb.net/?retryWrites=true&w=majority"
+    # Create a new client and connect to the server
+    client = MongoClient(uri, server_api=ServerApi('1'))
+    db_name = "Scraper_Global"
+    collection_name = "Control_Parameters"
+    
+    # Check if the database and collection exist, create if not
+    if db_name not in client.list_database_names():
+        client[db_name].create_collection(collection_name)
+    
+    db = client[db_name]
+    collection = db[collection_name]
+
+    # Check if control_parameters document exists
+    control_params = collection.find_one({"name": "control_parameters"})
+    if not control_params:
+        control_params = {"name": "control_parameters", "all_current_scraping_products": []}
+        collection.insert_one(control_params)
+
+    all_current_scraping_products = control_params.get("all_current_scraping_products", [])
+    local_scraping_products = []
+
+    # Read mongo_data_base_name_prefix from each JSON file
+    for json_file in json_files:
+        with open(os.path.join("scrape_listing_parameters", json_file), 'r') as file:
+            data = json.load(file)
+            local_scraping_products.append(data["mongo_data_base_name_prefix"])
+
+    # Determine products to sync
+    scraping_products_to_sync_to_mongo = [product for product in local_scraping_products if product not in all_current_scraping_products]
+    scraping_products_to_sync_localy = [product for product in all_current_scraping_products if product not in local_scraping_products]
+
+    # Update MongoDB document
+    if scraping_products_to_sync_to_mongo:
+        collection.update_one(
+            {"name": "control_parameters"},
+            {"$addToSet": {"all_current_scraping_products": {"$each": scraping_products_to_sync_to_mongo}}}
+        )
+
+    # For now, we're not doing anything with scraping_products_to_sync_localy
+    # Future functionality can be added here
+
+    client.close()
 
 async def check_for_stop_command():
     global do_scrape
@@ -45,10 +90,11 @@ async def main():
         print("Starting new scrape cycle.")
         all_files = os.listdir(sub_path)
         json_files = [file for file in all_files if file.endswith('.json')]
+        SynchronizeScrapeProducts(json_files)
         for json_file in json_files:
             json_parameters_path = os.path.join(sub_path, json_file)
             n+=1
-            
+
             print(f"Starting scrape {n} for {json_file}...")
             await attempt_runs(json_parameters_path, json_parameters_global_path, max_retries, retry_delay)
             
